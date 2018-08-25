@@ -1,0 +1,72 @@
+
+.container{
+	z-index: 1;  
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none; 				
+}
+.highlight:hover{
+	background-color: #EDEDEDFF !important;
+}
+
+
+i:hover{
+	cursor: pointer;
+}
+
+#delete{
+	color: red !important;
+}
+
+#add{
+	color: green !important;
+}
+
+.add-users{
+	border: 1px solid black;
+	border-radius: 4px;
+    padding: 3px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.new-site-info{
+	width: 50%;
+    border: 1px solid black;
+    padding: 25px;
+    text-align: center;
+    margin: auto;
+    z-index: 1;
+    display: none;
+}
+
+.active-item{
+	background-color: red;
+}
+
+.black{
+	height: 100vh;
+    width: 100%;
+    background: black;
+    z-index: 1;
+    opacity: 0.9;
+    position: absolute;
+    top: 0px;
+    display: none;
+}
+
+.account{
+	border: 1px solid lightgray;
+    padding: 11px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.site p{
+    width: 17%;
+}
+
