@@ -19,7 +19,75 @@
 
 	<body>
 
-		<div class="black"></div>
+		<!-- New site popup box -->
+		<div class="new-site-info hide center-align">
+			<h3>Add New Site</h3>
+			<p class="no-value-alert hide">Can't submit nothing! Enter a site.</p>
+			<div class="row">
+			    <form class="col s12">
+			      <div class="row">
+			        <div class="input-field col s6">
+			          <i class="material-icons prefix">mode_edit</i>
+			          <textarea id="site-input" class="materialize-textarea"></textarea>
+			          <label for="icon_prefix2">Site Name</label>
+			        </div>
+			        <div class="input-field col s6">
+			          <i class="material-icons prefix">mode_edit</i>
+			          <textarea id="num-of-accounts-input" class="materialize-textarea"></textarea>
+			          <label for="icon_prefix2"># of Accounts</label>
+			        </div>
+			        <div class="input-field col s12">
+			          <i class="material-icons prefix">mode_edit</i>
+			          <textarea id="desciption-input" class="materialize-textarea"></textarea>
+			          <label for="icon_prefix2">Desciption</label>
+			        </div>
+			      </div>
+			    </form>
+		    </div>
+			<button id="site-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+		    	<i class="material-icons right">send</i>
+		    </button>
+		    <button class="btn waves-effect waves-light" type="submit" name="action" id="close-box">Close
+		    	<i class="material-icons right">close</i>
+		    </button>
+		</div>
+
+		<!-- New account popup box -->
+		<div class="new-account-info hide">
+			<h3>Add New Account</h3>
+			<p class="no-value-alert2 hide">Can't submit nothing! Enter all account info.</p>
+			<div class="row">
+			    <form class="col s12">
+			      <div class="row">
+			        <div class="input-field col s6">
+			          <i class="material-icons prefix">mode_edit</i>
+			          <textarea id="user-input" class="materialize-textarea"></textarea>
+			          <label for="icon_prefix2">Username</label>
+			        </div>
+			        <div class="input-field col s6">
+			          <i class="material-icons prefix">mode_edit</i>
+			          <textarea id="pass-input" class="materialize-textarea"></textarea>
+			          <label for="icon_prefix2">Password</label>
+			        </div>
+			        <div class="input-field col s12">
+			          <i class="material-icons prefix">mode_edit</i>
+			          <textarea id="email-input" class="materialize-textarea"></textarea>
+			          <label for="icon_prefix2">Email</label>
+			        </div>
+			      </div>
+			    </form>
+		    </div>
+			<button id="account-submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+		    	<i class="material-icons right">send</i>
+		    </button>
+		    <button class="btn waves-effect waves-light" type="submit" name="action" id="close-box2">Close
+		    	<i class="material-icons right">close</i>
+		    </button>
+		</div>
+
+		<!--popup box screen -->
+		<div class="black hide"></div>
+
 		<ul class="collection container">
 			<h1 class="center-align">Storage</h1>
 			<div class="row center-align">
@@ -30,26 +98,13 @@
 					<i class="medium material-icons" id="delete">close</i>
 				</div>
 			</div>
-			<!-- New site popup box -->
-			<div class="new-site-info">
-				<h3>Add New Site</h3>
-				<input type="text" autofocus placeholder="Enter new site...">
-				<button class="btn waves-effect waves-light" type="submit" name="action">Submit
-			    	<i class="material-icons right">send</i>
-			    </button>
-			    <button class="btn waves-effect waves-light" type="submit" name="action" id="close-box">Close
-			    	<i class="material-icons right">close</i>
-			    </button>
-			</div>
 			<!-- favorited sites -->
 			<div class="site light-green lighten-5">
 			    <li class="collection-item avatar highlight">
 			    	<i class="material-icons circle">folder</i>
 			      <span class="title">https://google.com</span>
-			      <p>This is an example
-			      	<br>
-			      	# of accounts:
-			      </p>
+			      <p id="desciption-text">This is an example</p>
+			      <p># of accounts:</p>
 			      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
 			      <span class="add-users lime lighten-2">Add Accounts</span>
 			    </li>
@@ -70,32 +125,11 @@
 			    <li class="collection-item avatar highlight">
 			    	<i class="material-icons circle">folder</i>
 			      <span class="title">https://google.com</span>
-			      <p>This is an example
-			      	<br>
-			      	# of accounts:
-			      </p>
+			      <p id="desciption-text">This is an example</p>
+			      <p># of accounts:</p>
 			      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
 			      <span class="add-users lime lighten-2">Add Accounts</span>
 			    </li>
-			</div>
-			<div class="site light-green lighten-5">
-			    <li class="collection-item avatar highlight">
-			    	<i class="material-icons circle">folder</i>
-			      <span class="title">https://google.com</span>
-			      <p>This is an example
-			      	<br>
-			      	# of accounts:
-			      </p>
-			      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-			      <span class="add-users lime lighten-2">Add Accounts</span>
-			    </li>
-			    <div class="accounts hide">
-				    <div class="account">
-				      	<span id="username">Username: </span>
-				      	<span id="password">Password: </span>
-				      	<span id="email">Email: </span>
-				    </div>
-				</div>
 			</div>
 		</ul>
 
