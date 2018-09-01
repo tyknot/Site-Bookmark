@@ -1,56 +1,111 @@
-const infoBox = document.querySelector('.new-site-info');
-const blackScreen = document.querySelector('.black');
 const items = document.querySelectorAll('.collection-item');
 const add_items = document.querySelector('#add');
 const active_items = document.querySelectorAll('.active-item');
 
-// add new site bookmark
-add_items.addEventListener('click', (e) =>{
-	// container to append items to
-	const container = document.querySelector('.container');
+// new site input variables 
+const siteInput = document.querySelector('#site-input');
+const siteSubmit = document.querySelector('#site-submit');
 
-	// create new .site div
-	let newDiv = document.createElement('div');
-	newDiv.className += 'site';
+// new account variables
+const userInput = document.querySelector('#user-input');
+const passInput = document.querySelector('#pass-input');
+const emailInput = document.querySelector('#email-input');
 
-	// create new li item
-	let newLi = document.createElement('li');
-	newLi.className += 'collection-item';
-	newLi.className += ' avatar';
-	newLi.className += ' highlight';
-	// append li to container 
-	container.appendChild(newLi);
+// new site popup
+const backgroundBlack = document.querySelector('.black');
+const new_site_info = document.querySelector('.new-site-info');
+const new_account_info = document.querySelector('.new-account-info');
+const alert = document.querySelector('.no-value-alert');
+const alert2 = document.querySelector('.no-value-alert2');
 
-	//  create i element
-	let newI = document.createElement('i');
-	newI.className += 'material-icons'
-	newI.className += ' circle'
-	// append to li
-	newLi.appendChild(newI);
+// create new site bookmark
+let newSite = function(){
+	// alert error
+	if(siteInput.value.length == 0){
+		alert.classList.remove('hide');
+	}else{
+		const container = document.querySelector('.container');
 
-	// create new span
-	let newA = document.createElement('a'); 
-	let newSpan = document.createElement('span');
-	newSpan.className += 'title';
-	newSpan.innerHTML = 'Title';
-	newLi.appendChild(newA);
-	newA.appendChild(newSpan);
+		alert.classList.add('hide');
+		backgroundBlack.classList.toggle('hide');
+		new_site_info.classList.toggle('hide');
 
-	// create new p tag
-	let newP = document.createElement('p');
-	let newBr = document.createElement('br');
-	newP.innerHTML = 'First Line';
-	newLi.appendChild(newP);
-	newP.append(newBr);
-	newP.innerHTML += 'Second line';
+		// create new .site div
+		let newDiv = document.createElement('div');
+		newDiv.className += 'site';
+		newDiv.className += ' light-green';
+		newDiv.className += ' lighten-5';
+		container.appendChild(newDiv);
+
+		// create new li item
+		let newLi = document.createElement('li');
+		newLi.className += 'collection-item';
+		newLi.className += ' avatar';
+		newLi.className += ' highlight';
+		// append li to container 
+		newDiv.appendChild(newLi);
+
+		//  create i element
+		let newI = document.createElement('i');
+		newI.className += 'material-icons';
+		newI.className += ' circle';
+		newI.innerHTML = 'folder';
+		// append to li
+		newLi.appendChild(newI);
+
+		// create new span
+		let newA = document.createElement('a'); 
+		let newSpan = document.createElement('span');
+		newA.href = siteInput.value;
+		newA.target = '_blank';
+		newSpan.className += 'title';
+		newSpan.innerHTML = siteInput.value;
+		newLi.appendChild(newA);
+		newA.appendChild(newSpan);
+
+		// create new p tag
+		let newP = document.createElement('p');
+		let newP2 = document.createElement('p');
+		let newBr = document.createElement('br');
+		newP.id = 'description-text';
+		newP.innerHTML = 'this is an example';
+		newP2.innerHTML += '# of accounts';
+		newLi.appendChild(newP);
+		newLi.appendChild(newP2);
+
+		// create star icon
+		let star = document.createElement('a');
+		let starIcon = document.createElement('i');
+		star.className += 'secondary-content';
+		starIcon.innerHTML = 'grade';
+		starIcon.className += 'material-icons';
+		newLi.appendChild(star);
+		star.appendChild(starIcon);
+		
+		// create add accounts button
+		let newAccounts = document.createElement('span');
+		newAccounts.innerHTML = 'Add Accounts';
+		newAccounts.className += 'add-users';
+		newAccounts.className += ' lime';
+		newAccounts.className += ' lighten-2';
+		newLi.appendChild(newAccounts);
+
+	}
+}
+
+// Submit a new site listeners
+siteSubmit.addEventListener('click', newSite);
+siteInput.addEventListener('keyup', (e)=>{
+	if(e.keyCode == 13){
+		newSite();
+	}
 });
 
-
+// a few click listeners for other elements
 document.addEventListener('click', (e) =>{
 	let target = e.target;
 
-	if(target.classList.contains('collection-item')){
-		console.log('active item');
+	if(target.matches('.collection-item')){
 		target.classList.toggle('active-item');
 
 		// active item clicked
@@ -76,41 +131,49 @@ document.addEventListener('click', (e) =>{
 	}
 
 	// add new accounts 
-	if(target.classList.contains('add-users')){
-		const accounts = document.querySelector('.accounts');
-		if(!accounts){
-			console.log('not availble');
+	if(target.matches('.add-users')){
+		let accounts = document.querySelector('.accounts');
+
+		backgroundBlack.classList.toggle('hide');
+		new_account_info.classList.toggle('hide');
+
+		// alert error
+		if(userInput.value.length || passInput.value.length || emailInput.value.length == 0){
+			alert2.classList.remove('hide');
+		}else{
+			// create div 
+			let newDiv = document.createElement('div');
+			newDiv.className += 'account';
+			accounts.appendChild(newDiv);
+			// create span element
+			let newSpan = document.createElement('span');
+			newSpan.id += 'username';
+			newSpan.innerHTML = 'Username:';
+			newDiv.appendChild(newSpan);
+
+			let newSpan2 = document.createElement('span');
+			newSpan2.id += 'password';
+			newSpan2.innerHTML = 'Password:';
+			newDiv.appendChild(newSpan2);
+
+			let newSpan3 = document.createElement('span');
+			newSpan3.id += 'email';
+			newSpan3.innerHTML = 'Email:';
+			newDiv.appendChild(newSpan3);
 		}
-		console.log('emfkf');
-		// create div 
-		let newDiv = document.createElement('div');
-		newDiv.className += 'account';
-		accounts.appendChild(newDiv);
-		// create span element
-		let newSpan = document.createElement('span');
-		newSpan.id += 'username';
-		newSpan.innerHTML = 'Username:';
-		newDiv.appendChild(newSpan);
-
-		let newSpan2 = document.createElement('span');
-		newSpan2.id += 'password';
-		newSpan2.innerHTML = 'Password:';
-		newDiv.appendChild(newSpan2);
-
-		let newSpan3 = document.createElement('span');
-		newSpan3.id += 'email';
-		newSpan3.innerHTML = 'Email:';
-		newDiv.appendChild(newSpan3);
 	}
 
-	// add new sites
 	if(target.id == 'add'){
-		console.log('add');
+		backgroundBlack.classList.toggle('hide');
+		new_site_info.classList.toggle('hide');
+	}
 
-		let backgroundBlack = document.querySelector('.black');
-		let new_site_box = document.querySelector('.new-site-info')
-		backgroundBlack.style.display = '';
-		new_site_box.style.display = '';
+	if(target.matches('#close-box')){
+		backgroundBlack.classList.toggle('hide');
+		new_site_info.classList.toggle('hide');
+	}else if(target.matches('#close-box2')){
+		backgroundBlack.classList.toggle('hide');
+		new_account_info.classList.toggle('hide');
 	}
 
 	// delete sites
